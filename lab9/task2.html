@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+</head>
+<body>
+<input id="plus" type="button" value="A+">
+<input id="minus" type="button" value="A-">
+
+<p id="text">
+    Створити сторінку, розмір текстового шрифта на якій можна змінювати за допомогою кнопок A + / A-.
+    Вибір користувача запам'ятовувати в cookie і при наступному вході на сторінку вибраний шрифт застосовувати автоматично.
+</p>
+<script>
+    window.onload = function (){
+        document.getElementById("text").style.fontSize = getCookie('font')
+    }
+    document.getElementById("plus").addEventListener('click', function (){
+        let str = window.getComputedStyle(document.getElementById("text"), null).getPropertyValue('font-size')
+        document.getElementById("text").style.fontSize = (parseFloat(str)+1) + 'px'
+        let text = document.getElementById("text")
+        document.cookie = 'font' + '=' + text.style.fontSize
+    })
+    document.getElementById("minus").addEventListener('click', function (){
+        let str = window.getComputedStyle(document.getElementById("text"), null).getPropertyValue('font-size')
+        document.getElementById("text").style.fontSize = (parseFloat(str)-1) + 'px'
+        let text = document.getElementById("text")
+        document.cookie = 'font' + '=' + text.style.fontSize
+    })
+
+
+    function getCookie(name) {
+        let q = name + "=";
+        let c = document.cookie.split(';');
+        for (let i = 0; i < c.length; i++) {
+            let c1 = c[i];
+            while (c1.charAt(0) == ' ') c1 = c1.substring(1, c1.length);
+            if (c1.indexOf(q) == 0) return c1.substring(q.length, c1.length);
+        }
+        return null
+    }
+</script>
+</body>
+</html>

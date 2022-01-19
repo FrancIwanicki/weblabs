@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<style>
+    #showbutt {
+        position: absolute;
+        height: 22px;
+        width: 150px;
+        margin-left: 190px;
+    }
+
+    #input {
+        display: inline-block;
+        position: absolute;
+    }
+
+    #miniimg {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        margin-top: 40px;
+    }
+
+    #IMG {
+        position: absolute;
+        margin-top: 70px;
+    }
+
+    #res {
+        position: absolute;
+        margin-top: 23px;
+    }
+</style>
+<body>
+
+<input id="input" type="text">
+<input id="showbutt" type="button" value="ПОКАЗАТИ">
+<b id="res"></b>
+<div id="miniimg"></div>
+<img id="IMG">
+
+<script>
+    ///[" gif1.gif ", " gif2.gif ", " gif3.gif ", " japan.jpg "]
+
+    let showbutt = document.getElementById('showbutt');
+    let input = document.getElementById('input');
+    let miniimg = document.getElementById('miniimg');
+
+
+    showbutt.addEventListener('click', function () {
+        let array = input.value
+
+        function JSONToValue(array) {
+            try {
+                JSON.parse(array)
+            } catch (e) {
+                return false
+            }
+            return true
+
+        }
+
+        if (JSONToValue(array)) {
+            document.getElementById("res").innerHTML = "OK"
+            document.getElementById("res").style.color = 'green'
+            let img = ''
+            let array = input.value
+            array = JSON.parse(array)
+            for (let i = 0; i < array.length; i++) {
+                img += '<img src= "' + array[i] + '" width="25%">'
+            }
+            document.getElementById('miniimg').innerHTML = img
+            miniimg.addEventListener('click', function (event) {
+                if (event.target) {
+                    let target = event.target
+                    document.getElementById('IMG').src = target.src
+                    document.getElementById('IMG').style.width = target.naturalWidth + 'px'
+                }
+            });
+        } else {
+            document.getElementById("res").innerHTML = "Помилка формату JSON"
+            document.getElementById("res").style.color = 'red'
+            document.getElementById('IMG').src = ""
+            document.getElementById('miniimg').innerHTML = ""
+        }
+
+
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+<textarea id="textarea"></textarea>
+<input id="back" type="button" value="<=">
+<input id="forward" type="button" value="=>">
+<script>
+    let temp = 0
+    document.getElementById('textarea').onchange = function (event) {
+        temp++
+        document.cookie = "change" + temp + "=" + event.target.value
+    }
+
+    document.getElementById("back").addEventListener('click', function () {
+        if (temp > 1) {
+            temp--
+            document.getElementById('textarea').value = getCookie('change' + temp)
+        }
+    })
+    document.getElementById("forward").addEventListener('click', function () {
+        let array = document.cookie.split(";")
+        if (array.length > temp) {
+            temp++
+            document.getElementById('textarea').value = getCookie('change' + temp)
+        }
+
+    })
+
+    function getCookie(name) {
+        let q = name + "=";
+        let c = document.cookie.split(';');
+        for (let i = 0; i < c.length; i++) {
+            let c1 = c[i];
+            while (c1.charAt(0) == ' ') c1 = c1.substring(1, c1.length);
+            if (c1.indexOf(q) == 0) return c1.substring(q.length, c1.length);
+        }
+        return null
+    }
+
+</script>
+</body>
+</html>

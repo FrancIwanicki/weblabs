@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task6</title>
+    <style>
+        button {
+            width: 80px;
+            border: 4px solid lightsteelblue;
+        }
+
+        #canvas {
+            border: 4px solid lightsteelblue;
+            margin: 10px 0;
+        }
+
+        .shape {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: royalblue;
+        }
+
+        #circle {
+            left: 120px;
+            border-radius: 50%;
+        }
+
+        .selected {
+            outline: 5px solid lightsteelblue;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button id="clear">clear</button>
+    <button id="refill">refill</button>
+</div>
+<div>
+    <canvas id="canvas" width="600px" height="600px"></canvas>
+</div>
+<div>
+    <div class="shape selected" id="square"></div>
+    <div class="shape" id="circle"></div>
+</div>
+</body>
+<script>
+    class Shape {
+        static refillPaint() {
+            this.Amount = 1
+        }
+
+        static Amount = 1
+
+        constructor(x, y) {
+            this.coordX = x
+            this.coordY = y
+            this.width = 60
+            this.height = 60
+        }
+
+        draw() {
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0)'
+            ctx.strokeRect(this.coordX, this.coordY, this.width, this.height)
+        }
+    }
+
+    class Square extends Shape {
+        constructor(x, y, color) {
+            super(x, y);
+            this.color = color
+        }
+
+        draw(ctx) {
+            ctx.fillStyle = `rgba(${this.color}, ${Shape.Amount}`
+            super.draw(this.coordX, this.coordY, this.width, this.height)
+            ctx.fillRect(this.coordX, this.coordY, this.width, this.height)
+            Shape.Amount -= 0.01
+        }
+    }
+
+    class Circle extends Shape {
+        constructor(x, y, color) {
+            super(x, y);
+            this.color = color
+        }
+
+        draw(ctx) {
+
+            ctx.fillStyle = `rgba(${this.color}, ${Shape.Amount}`
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0)'
+            ctx.beginPath()
+            ctx.arc(this.coordX, this.coordY, this.width / 1.5, 0, 360, false)
+            Shape.Amount -= 0.01
+            ctx.stroke()
+            ctx.fill()
+        }
+    }
+
+    let canvas = document.getElementById('canvas')
+    let ctx = canvas.getContext('2d')
+    let sq = document.getElementById('square')
+    let circ = document.getElementById('circle')
+    let clear = document.getElementById('clear')
+    let refill = document.getElementById('refill')
+
+
+    sq.addEventListener('click', function () {
+        document.getElementsByClassName('selected')[0].classList.toggle('selected')
+        this.classList.toggle('selected')
+    })
+
+    circ.addEventListener('click', function () {
+        document.getElementsByClassName('selected')[0].classList.toggle('selected')
+        this.classList.toggle('selected')
+    })
+
+
+    clear.onclick = function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    }
+
+    refill.onclick = function () {
+        Shape.refillPaint()
+    }
+
+    canvas.onmousedown = function (ev) {
+        let shape
+        if (document.getElementsByClassName('selected')[0].id === 'square') {
+            shape = new Square(ev.offsetX - 25, ev.offsetY - 25, '80, 120, 200')
+        } else {
+            shape = new Circle(ev.offsetX, ev.offsetY, '90, 120, 200')
+        }
+        shape.draw(ctx)
+
+        function onMouseMove(e) {
+            if (shape instanceof Square) {
+                shape.coordX = e.offsetX - 30
+                shape.coordY = e.offsetY - 30
+            } else {
+                shape.coordX = e.offsetX
+                shape.coordY = e.offsetY
+            }
+            shape.draw(ctx)
+        }
+
+        canvas.addEventListener('mousemove', onMouseMove)
+        window.onmouseup = function () {
+            canvas.removeEventListener('mousemove', onMouseMove)
+        }
+    }
+
+</script>
+
+
+</html>

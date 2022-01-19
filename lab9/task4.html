@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+</head>
+<body>
+<form name="myForm">
+    <p> Логін : <input type="text" id="text"></p>
+    <p><select name="gender" id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select></p>
+    <p><textarea id="textarea"></textarea></p>
+    <p>З правилами ознайомлений<input id="check" type="checkbox"></p>
+    <button id="but">Зареєструватися</button>
+</form>
+<script>
+    let text = document.getElementById('text');
+    let countries = document.getElementById('gender').querySelectorAll('option');
+    let textarea = document.getElementById('textarea');
+    let check = document.getElementById('check');
+
+
+    window.onload = function () {
+        for (let option of countries) {
+            if (option.value === localStorage.getItem('gender')) {
+                document.getElementById('gender').value = option.value;
+            }
+        }
+        text.value = localStorage.getItem('text')
+        textarea.value = localStorage.getItem('textarea');
+        check.checked = localStorage.getItem('check');
+    }
+
+    document.getElementById('but').onclick = function () {
+        localStorage.setItem('text', text.value)
+        localStorage.setItem('name', text.value);
+        localStorage.setItem('gender', document.getElementById('gender').value);
+        localStorage.setItem('textarea', textarea.value);
+        localStorage.setItem('check', check.checked);
+    }
+</script>
+</body>
+</html>

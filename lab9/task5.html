@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+</head>
+<body>
+
+<video width="720" height="480" controls="controls" id="video">
+    <source src="Snowfall.mp4">
+
+</video>
+<script>
+    window.onload = function(){
+        if(localStorage.currentTime) document.getElementById('video').currentTime = localStorage.currentTime
+        document.getElementById('video').addEventListener('timeupdate', () => localStorage.currentTime
+            = document.getElementById('video').currentTime)
+    }
+</script>
+</body>
+</html>
