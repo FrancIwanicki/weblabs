@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="fi.ico" type="image/png" />
+    <link
+      href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css"
+      rel="stylesheet"
+    />
+    <title>Lab4</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        color: beige;
+        font-family: sans-serif;
+        text-decoration: none;
+      }
+      body {
+        background-color: #0e0e10;
+      }
+      .Politeh {
+        left: 50%;
+        top: 10%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        background-image: url(Логотип_Житомирської_політехніки.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 120px;
+        width: 350px;
+      }
+      .main {
+        margin-top: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .main p {
+        margin-bottom: 70px;
+      }
+      .main a {
+        border: solid 1px white;
+        padding: 17px 60px;
+        border-radius: 30px;
+        transition: 0.5s;
+      }
+      .main a:hover {
+        border: solid 1px orchid;
+        padding: 17px 80px;
+      }
+      ::-webkit-scrollbar {
+        width: 7px;
+        background-color: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: orchid;
+      }
+
+      ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(143, 18, 122, 0.2);
+        border-radius: 10px;
+        background-color: transparent;
+      }
+      .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 10px;
+      }
+      .links p {
+        margin-top: 25px;
+        margin-bottom: 5px;
+      }
+      .links p:nth-of-type(1) {
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      .links a {
+        padding: 10px 15px 10px 15px;
+        margin-right: 10px;
+        letter-spacing: 2px;
+        border-radius: 20px;
+        background-color: rgba(44, 44, 44, 0.295);
+        color: rgba(114, 114, 114, 0.342);
+        transition: 0.5s;
+      }
+      .links a:hover {
+        background-color: rgba(82, 82, 82, 0.295);
+        color: rgb(255, 255, 255);
+      }
+      .arrowback a {
+        color: rgb(255, 255, 255);
+        font-size: 24px;
+        padding: 10px 10px;
+        margin-top: 10px;
+      }
+      .arrowback a:hover i {
+        color: rgb(129, 129, 129);
+      }
+      .arrowback i {
+        margin-top: 10px;
+        transition: 0.5s;
+      }
+      table, td {
+            border: 1px solid rgba(114, 114, 114, 0.342);
+            border-collapse: collapse;
+            width: 50%;
+            text-align: center;
+        }
+
+        label, tr, th {
+            text-align: center;
+        }
+        input{
+            color: black;
+        }
+        button{
+            color: black;
+        }
+
+    </style>
+  </head>
+  <body>
+    <span class="arrowback"
+      ><a href="main.html"><i class="fas fa-arrow-left"></i></a
+    ></span>
+    <div class="Politeh"></div>
+    <div class="main labs">
+        <script src="lab4/lab4lib.js"></script>
+        <table>
+            <tr>
+            <td><b>Завдання</b></td>
+            <td></td>
+            <td><b>Результат</b></td>
+            </tr>
+            <tr>
+            <td><b>Завдання №1.</b> Виведення поточної дати.</td>
+            <td><button type="button" onclick="addDate()">Виконати</button></td>
+            <td id="task1"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №2.</b> Виведення дня тижня.</td>
+                <td><button type="button" onclick="addDay()">Виконати</button></td>
+                <td id="task2"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №3.</b> Дата N днів назад.</td>
+                <td><button type="button" onclick="getDateAgo()">Виконати</button>
+                <p><input type="text" id="n"/></p></td>
+                <td id="task3"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №4.</b> Останній день місяця.</td>
+                <td><button type="button" onclick="lastdaymonth()">Виконати</button>
+                    <p><input type="text" id="month"/></p>
+                    <p><input type="text" id="year"/></p></td>
+                <td id="task4"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №5.</b> Кількість секунд від початку і до кінця дня.</td>
+                <td><button type="button" onclick="Seconds()">Виконати</button></td>
+                <td id="task5"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №6.</b> Дані про рік.</td>
+                <td><button type="button" onclick="History()">Виконати</button>
+                    <p><input type="text" id="age"/></p></td>
+                <td id="task6"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №7.</b> Тривалість події.</td>
+                <td><button type="button" onclick="Duration()">Виконати</button>
+                    <p><input type="text" id="year1"/></p>
+                    <p><input type="text" id="year2"/></p></td>
+                <td id="task7"></td>
+            </tr>
+            <tr>
+                <td><b>Завдання №8.</b> Гринвіцький годинник.</td>
+                <td><button type="button" onclick="Clock()">Виконати</button>
+                    <p><input type="text" id="clock1"/>:<input type="text" id="clock11"/></p>
+                    <p><input type="text" id="clock2"/>:<input type="text" id="clock22"/></p></td>
+                <td id="task8"></td>
+            </tr>
+        </table>
+        
+      </div>
+    <div class="links">
+      <p>Frants Ivanytskyi IPZ_20_3(1)</p>
+      <p>
+        <a href="https://franciwanicki.github.io/" target="_blank">resume</a>
+        <a href="https://drive.google.com/file/d/1dwoalh8htJI2NCuSYBi0NFKir_mFzaL8/view" target="_blank">portfolio</a>
+        <a href="https://github.com/FrancIwanicki" target="_blank">github</a>
+        <a href="https://t.me/ivanytskyy" target="_blank">telegram</a>
+        <a href="https://www.instagram.com/raum.astro/" target="_blank">instagram</a>
+      </p>
+    </div>
+  </body>
+</html>
