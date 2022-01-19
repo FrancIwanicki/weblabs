@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5</title>
+</head>
+<body>
+<script>
+    function checkSpam(word){
+        let lower_w = word.toLowerCase();
+        return lower_w.includes('viagra') || lower_w.includes('xxx');
+    }
+    alert(checkSpam(prompt("Проверка на спам: ")));
+</script>
+</body>
+</html>

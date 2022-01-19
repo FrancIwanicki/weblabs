@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<script>
+    function randomInteger(min , max){
+        let rand = min + Math.random() * (max + 1 - min);
+        return Math.floor(rand);
+    }
+    alert(randomInteger(+prompt("min = ") , +prompt("max = ")));
+</script>
+</body>
+</html>
