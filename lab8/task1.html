@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" manifest="Manifest.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <script src="lab8\task1.js" defer></script>
+</head>
+<body>
+<p>Задайте діапазон чисел від <input type="number" id="from" value="0"> до <input type="number" id="to" value="100000">
+</p>
+<button id="Button" onclick="startSearch()">Старт</button>
+<button onClick="stopSearch()">Стоп</button>
+<br>
+<textarea id="text"></textarea>
+</body>
+<style>
+    #text {
+        border: solid 1px black;
+        padding: 3px;
+        width: 500px;
+        height: 400px;
+        max-width: 500px;
+        overflow: scroll;
+        overflow-x: hidden;
+        font-size: 10pt;
+        margin-top: 25px;
+    }
+</style>
+</html>
