@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+
+
+<div id="square"></div>
+<br>
+<h1></h1>
+
+</body>
+<style>
+    h1 {
+        margin-left: 600px;
+        visibility: hidden;
+    }
+
+    #square {
+        width: 275px;
+        height: 275px;
+        background: dodgerblue;
+        border: 2px solid blue;
+        margin-left: 32%;
+        margin-top: 3%;
+    }
+</style>
+
+<script>
+    let square = document.getElementById('square');
+    let text = document.getElementsByTagName('h1')[0];
+    square.addEventListener('mousemove',
+        function (event) {
+            text.style.visibility = 'visible';
+            let deltaX = event.offsetX == undefined ? event.layerX : event.offsetX;
+            let deltaY = event.offsetY == undefined ? event.layerY : event.offsetY;
+            text.innerHTML = 'X = ' + deltaX + ', Y = ' + deltaY;
+        });
+
+    square.addEventListener('mouseout',
+        function () {
+            text.style.visibility = 'hidden';
+        });
+</script>
+</html>

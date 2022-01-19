@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Task1</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td><img src="1.jpg" /></td>
+        <td><img src="3.jpg" /></td>
+        <td><img src="9.jpg" /></td>
+      </tr>
+      <tr>
+        <td><img src="2.jpg" /></td>
+        <td><img src="6.jpg" /></td>
+        <td><img src="5.jpg" /></td>
+      </tr>
+      <tr>
+        <td><img src="8.jpg" /></td>
+        <td><img src="4.jpg" /></td>
+        <td><img src="7.jpg" /></td>
+      </tr>
+    </table>
+  </body>
+
+  <style>
+    img {
+      height: 300px;
+      width: 300px;
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+
+    .selected {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  </style>
+
+  <script>
+    var click = document.getElementsByTagName("table")[0];
+    click.addEventListener("click", function (event) {
+      let tr = event.target;
+      if (tr.tagName !== "IMG") return;
+      tr.classList.toggle("selected");
+    });
+  </script>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+
+</head>
+<body>
+<div id="field">
+    <div id="block1">
+        <label for="1"><input type="checkbox" id="1">Адрієнко А. Ю.</label>
+        <label for="2"><input type="checkbox" id="2">Борисенко П. В.</label>
+        <label for="3"><input type="checkbox" id="3">Василенко В. В.</label>
+        <label for="4"><input type="checkbox" id="4">Гавриленко С. Ч.</label>
+        <label for="5"><input type="checkbox" id="5">Дмитренко Я. В.</label>
+        <label for="6"><input type="checkbox" id="6">Клименко В. М.</label>
+    </div>
+    <div id="buttons">
+        <button onclick="ToRight()"> ></button>
+        <br>
+        <button onclick="ToLeft()"> <</button>
+    </div>
+    <div id="block2"></div>
+</div>
+
+</body>
+<style>
+    * {
+        background: dodgerblue;
+    }
+
+    #field {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        margin-top: 70px;
+    }
+
+    #block1, #block2 {
+        width: 500px;
+        height: 300px;
+        background: lightsteelblue;
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        font-size: 35px;
+        display: inline-block;
+        background: lightsteelblue;
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+    button:hover {
+        background: lightsteelblue;
+    }
+
+    #buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    input, label {
+        background: lightsteelblue;
+    }
+</style>
+
+<script>
+    let block1 = document.getElementById('block1');
+    let block2 = document.getElementById('block2');
+
+
+    var arr1 = new Array(6);
+    for (let i = 0; i < 6; i++) {
+        arr1[i] = document.querySelectorAll('#block1 label')[i];
+    }
+    var arr2 = new Array(6);
+
+    function ToRight() {
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] === undefined) {
+                continue;
+            }
+            arr2[i] = undefined;
+            if (arr1[i].children[0].checked) {
+                arr1[i].children[0].checked = false;
+                arr2[i] = arr1[i];
+                block1.removeChild(arr1[i]);
+                arr1[i] = undefined;
+            }
+        }
+        let childs = document.querySelectorAll('#block2 label');
+        let block2 = document.getElementById('block2');
+        for (let i = 0; i < childs.length; i++)
+            block2.removeChild(childs[i]);
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr2[i] === undefined)
+                continue;
+            block2.appendChild(arr2[i]);
+        }
+
+    }
+
+    function ToLeft() {
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr2[i] === undefined) {
+                continue;
+            }
+            arr1[i] = undefined;
+            if (arr2[i].children[0].checked) {
+                arr2[i].children[0].checked = false;
+                arr1[i] = arr2[i];
+                block2.removeChild(arr2[i]);
+                arr2[i] = undefined;
+            }
+        }
+        let childs = document.querySelectorAll('#block1 label');
+
+        for (let i = 0; i < childs.length; i++)
+            block1.removeChild(childs[i]);
+
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] === undefined)
+                continue;
+            block1.appendChild(arr1[i]);
+        }
+    }
+</script>
+</html>

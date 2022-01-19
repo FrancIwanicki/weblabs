@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task6</title>
+</head>
+<body>
+
+<textarea id="inpt"></textarea>
+<div id="tablebox">
+</div>
+
+
+<script>
+    document.getElementById('inpt').oninput = function () {
+        document.getElementById('tablebox').innerHTML = ''
+
+        let table = document.createElement('table')
+
+        let strings = document.getElementById('inpt').value.split('\n')
+
+        for (let i = 0; i < strings.length; i++) {
+            let tr = table.insertRow()
+            for (let j = 0; j < strings[i].length; j++) {
+                let td = tr.insertCell()
+                if (strings[i][j] === '1') {
+                    td.style.background = 'blue'
+                    td.style.width = 50 + "px"
+                    td.style.height = 50 + "px"
+                    td.style.border = "thick double #32a1ce"
+                }
+                else if(strings[i][j] === '0'){
+                    td.style.background = 'white'
+                    td.style.border = "thick double #32a1ce"
+                    td.style.width = 50 + "px"
+                    td.style.height = 50 + "px"
+                }
+            }
+        }
+        document.getElementById('tablebox').append(table)
+    }
+</script>
+</body>
+</html>

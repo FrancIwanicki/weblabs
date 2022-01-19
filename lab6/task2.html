@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+</head>
+<body>
+
+<form>
+    <section>
+        <input type="text" placeholder="login">
+    </section>
+    <section>
+        <input type="password" placeholder="password">
+    </section>
+    <section>
+        <textarea placeholder="description"></textarea>
+    </section>
+</form>
+
+</body>
+
+<style>
+    form {
+        margin-left: 40%;
+        margin-top: 10%;
+    }
+
+    section {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid cornflowerblue;
+        width: 300px;
+    }
+
+    input, textarea {
+        border: 1px solid blue;
+    }
+
+    .changeColor {
+        background: lightsteelblue;
+    }
+</style>
+
+<script>
+    let element = document.getElementsByTagName('section');
+
+    for (let i = 0; i < element.length; i++) {
+        element[i].firstElementChild.addEventListener('focus',
+            function () {
+                this.parentNode.classList.add('changeColor');
+            });
+        element[i].firstElementChild.addEventListener('blur',
+            function () {
+                this.parentNode.classList.remove('changeColor');
+            });
+    }
+
+
+</script>
+</html>

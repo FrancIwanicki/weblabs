@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+    <style>
+
+        span {
+            border: 1px solid grey;
+        }
+
+        form {
+            width: 100px;
+            height: 100px;
+            background: dodgerblue;
+            position: absolute;
+            top: 25%;
+            right: 25%;
+        }
+    </style>
+</head>
+<body>
+
+Width: <input value="0" max="500" type="range" id="chngWidth"> 500 <span id="showWidth">0</span><br>
+Height: <input value="0" max="500" type="range" id="chngHeight"> 500 <span id="showHeight">0</span><br>
+Rotate: <input value="0" max="360" type="range" id="chngRotate"> 360 <span id="showRotate">0</span><br>
+<form alt="Form" id="form"></form>
+</body>
+<script>
+    let range = document.getElementsByTagName('input')
+    let form = document.getElementById('form')
+    let width = document.getElementById('showWidth')
+    let height = document.getElementById('showHeight')
+    let rotate = document.getElementById('showRotate')
+
+    for (let i = 0; i < range.length; i++) {
+        range[i].oninput = function () {
+            switch (i) {
+                case 0: {
+                    form.style.width = range[i].value + 'px'
+                    width.innerText = range[i].value
+                    break;
+                }
+                case 1: {
+                    form.style.height = range[i].value + 'px'
+                    height.innerText = range[i].value
+                    break;
+                }
+                case 2: {
+                    form.style.transform = `rotate(${range[i].value}deg)`
+                    rotate.innerText = range[i].value
+                }
+            }
+        }
+    }
+</script>
+</html>
