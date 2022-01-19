@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task10</title>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        Натисніть на коло, щоб видалити його.<br>
+        <input id="number" type="number" value="1"><br>
+        <button onclick="draw()">Побудувати</button>
+    </div>
+
+    <span id="block" onclick="del()"></span>
+</div>
+
+</body>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+    button:hover {
+        background: #fff4d8;
+    }
+    #block {
+        width: 400px;
+        height: 400px;
+        background: #a78806;
+    }
+</style>
+<script>
+    function del() {
+        let f = event.target;
+        if(f.tagName === 'DIV' ) {
+            f.parentNode.removeChild(f);
+        }
+    }
+
+    function randomInteger(min, max) {
+        return Math.floor(min + Math.random() * (max - min));
+    }
+
+
+    function draw() {
+        let num = document.getElementById('number');
+        let block = document.getElementById('block');
+        let blockStyle = getComputedStyle(block);
+
+        for(let i = 0; i < num.value; i++) {
+            let elem = document.createElement('div');
+            let radius = randomInteger(10, 50);
+            let diameter = 2 * radius;
+            elem.style.height = diameter + 'px';
+            elem.style.width = diameter + 'px';
+            elem.style.borderRadius = 50 + '%';
+            elem.style.backgroundColor = 'blue';
+            elem.style.position = 'absolute';
+            elem.style.marginLeft = randomInteger(0, parseInt(blockStyle.width) - diameter) + 'px';
+            elem.style.marginTop = randomInteger(0, parseInt(blockStyle.height) - diameter) + 'px';
+            block.appendChild(elem);
+        }
+    }
+</script>
+</html>

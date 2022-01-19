@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang= "en">
+<head>
+    <meta charset="UTF-8">
+    <title>task9</title>
+</head>
+<body>
+
+<div id="mainblock">
+    <div id="block">
+        <img src="111.png">
+        <img src="222.png">
+        <img src="333.png">
+        <img src="444.png">
+        <img src="555.png">
+        <img src="666.png">
+        <img src="777.png">
+        <img src="888.png">
+        <img src="999.png">
+        <img src="1010.png">
+        <img src="1111.png">
+        <img src="1212.png">
+    </div>
+</div>
+<button class="leftB" onclick="toLeft()"><</button>
+<button class="rightB" onclick="toRight()">></button>
+
+</body>
+
+<style>
+    *{
+        background: #102a77;
+    }
+    img {
+        float: left;
+        height: 84px;
+        width: 150px;
+    }
+    #mainblock {
+        position: absolute;
+        width: 150px;
+        height: 84px;
+        margin-top: 150px;
+        margin-left: 500px;
+        overflow: hidden;
+        border: 3px solid black;
+    }
+    #block {
+        transition: all ease 1s;
+        position: relative;
+        width: 2700px;
+        height: 300px;
+    }
+    button {
+        position: absolute;
+        background: #4756ff;
+        color: white;
+        font-size: 20px;
+        border-radius: 10%;
+    }
+    button:hover {
+        background: #0a2d66;
+        color: black;
+    }
+    .leftB {
+        margin-top: 180px;
+        margin-left: 480px;
+    }
+    .rightB {
+        margin-top: 180px;
+        margin-left: 650px;
+    }
+
+</style>
+<script>
+    let images = document.getElementById('block');
+
+    let left = 0;
+
+    function toRight() {
+        if(left < 11) {
+            left++
+            images.style.left = -left * 150 + 'px'
+        }
+        else {
+            left = 0
+            images.style.left = -left * 150 + 'px'
+        }
+    }
+    function toLeft() {
+        if(left === 0) {
+            left = 11
+            images.style.left = -left * 150 + 'px'
+        }
+        else {
+            left--
+            images.style.left = -left * 150 + 'px'
+        }
+    }
+</script>
+</html>

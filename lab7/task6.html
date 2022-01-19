@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task2</title>
+</head>
+<body>
+<div class="container">
+    <table id="palitra">
+        <tr>
+            <td class="dark-red"></td>
+            <td class="red"></td>
+            <td class="orange"></td>
+        </tr>
+        <tr>
+            <td class="yellow"></td>
+            <td class="salat"></td>
+            <td class="green"></td>
+        </tr>
+        <tr>
+            <td class="light-blue"></td>
+            <td class="blue"></td>
+            <td class="dark-blue"></td>
+        </tr>
+    </table>
+
+    <canvas id="polotno"></canvas>
+</div>
+<script>
+    let palitra = document.getElementById('palitra');
+
+    palitra.addEventListener('click', function (event) {
+        let cell = event.target;
+        cell.classList.toggle('frame')
+        gradient();
+    });
+
+    function gradient() {
+        let arrColor = document.getElementsByClassName('frame');
+        let tmp = 0;
+
+        let polotno = document.getElementById("polotno");
+        let ctx = polotno.getContext("2d");
+        let my_gradient = ctx.createLinearGradient(0,0,300,0);
+
+        for(let i = 0; i < arrColor.length; i++) {
+            tmp += 0.9 / arrColor.length.toFixed(2);
+            console.log(tmp)
+            let style = getComputedStyle(arrColor[i]);
+            my_gradient.addColorStop(tmp, style.backgroundColor);
+        }
+        ctx.fillStyle = my_gradient;
+        ctx.fillRect(0,0, 300, 500);
+    }
+
+</script>
+</body>
+<style>
+    .container {
+        display: flex;
+        justify-content: space-around;
+    }
+    .frame {
+        outline: 5px solid #00f8ff;
+    }
+    table {
+        flex-wrap: nowrap;
+        border-collapse: collapse;
+    }
+
+    #polotno {
+        height: 300px;
+        width: 500px;
+        background: white;
+        border: 3px solid black;
+    }
+    #palitra td {
+        height: 100px;
+        width: 100px;
+    }
+    .dark-red {
+        background-color: red;
+    }
+    .red {
+        background-color: orange;
+    }
+    .orange {
+        background-color: yellow;
+    }
+    .yellow {
+        background-color: yellowgreen;
+    }
+    .salat {
+        background-color: green;
+    }
+    .green {
+        background-color: deepskyblue;
+    }
+    .light-blue {
+        background-color: blue;
+    }
+    .blue {
+        background-color: violet;
+    }
+    .dark-blue {
+        background-color: blueviolet;
+    }
+</style>
+</html>

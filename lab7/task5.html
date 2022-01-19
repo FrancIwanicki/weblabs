@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task1</title>
+</head>
+<body>
+<div class="container">
+    <table id="palitra">
+        <tr>
+            <td class="dark-red"></td>
+            <td class="red"></td>
+            <td class="orange"></td>
+        </tr>
+        <tr>
+            <td class="yellow"></td>
+            <td class="salat"></td>
+            <td class="green"></td>
+        </tr>
+        <tr>
+            <td class="light-blue"></td>
+            <td class="blue"></td>
+            <td class="dark-blue"></td>
+        </tr>
+    </table>
+
+    <table id="polotno"></table>
+</div>
+<script>
+    let polotno = document.getElementById('polotno');
+    let palitra = document.getElementById('palitra');
+    let n = 20;
+    let m = 20;
+
+    for(let i = 0; i < n; i++) {
+        let row = polotno.insertRow(i);
+        for(let j = 0; j < m; j++) {
+            let cell = row.insertCell(j);
+            cell.classList.add("polotnoTd");
+        }
+    }
+
+    palitra.addEventListener('click', function (event) {
+        let cell = event.target;
+        let arrDel = palitra.getElementsByClassName('frame');
+        for(let i = 0; i < arrDel.length; i++) arrDel[i].classList.remove('frame');
+        cell.classList.add('frame');
+
+    });
+    polotno.addEventListener('mousedown', function (event) {
+        let cell = event.target;
+        let colorCell = palitra.getElementsByClassName('frame')[0];
+        let style = getComputedStyle(colorCell);
+
+        if(cell.style.backgroundColor === style.backgroundColor){
+            cell.style.backgroundColor = "white"
+        }
+        else{
+            cell.style.backgroundColor = style.backgroundColor;
+        }
+
+    });
+
+</script>
+</body>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: space-around;
+    }
+    .frame {
+        outline: 5px solid #00f8ff;
+    }
+
+    table {
+        flex-wrap: nowrap;
+        border-collapse: collapse;
+    }
+    .polotnoTd {
+        height: 30px;
+        width: 30px;
+        border: dotted 2px black;
+    }
+    #palitra td {
+        height: 100px;
+        width: 100px;
+    }
+    .dark-red {
+        background-color: #cb0000;
+    }
+    .red {
+        background-color: red;
+    }
+    .orange {
+        background-color: #ffad46;
+    }
+    .yellow {
+        background-color: yellow;
+    }
+    .salat {
+        background-color: greenyellow;
+    }
+    .green {
+        background-color: green;
+    }
+    .light-blue {
+        background-color: deepskyblue;
+    }
+    .blue {
+        background-color: dodgerblue;
+    }
+    .dark-blue {
+        background-color: blue;
+    }
+</style>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task8</title>
+</head>
+<body>
+<div class="container">
+    <h1>Список товарів:</h1>
+    <table id="shop">
+        <tr>
+            <td class="trousers">Брюки</td>
+            <td><button class="trousers" onclick="addTrousers()">Замовити</button></td>
+        </tr>
+        <tr>
+            <td class="shirt">Сорочка</td>
+            <td><button class="shirt" onclick="addShirt()">Замовити</button></td>
+        </tr>
+        <tr>
+            <td class="shorts">Шорти</td>
+            <td><button class="shorts" ONCLICK="addShorts()">Замовити</button></td>
+        </tr>
+        <tr>
+            <td class="choes">Туфлі</td>
+            <td><button class="shoes" onclick="addshoes()">Замовити</button></td>
+        </tr>
+    </table>
+    <h1>Кошик:</h1>
+    <table id="Buy">
+        <tr>
+            <td>Товар</td>
+            <td>Кількість</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<style>
+    *{
+        font-size: 20px;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    td {
+        padding: 5px;
+        border: 3px solid black;
+    }
+    .container {
+        margin-left: 600px;
+        margin-top: 150px;
+    }
+    h1 {
+        color: red;
+        font-size: 35px;
+    }
+    button {
+        border: 1px solid blue;
+        background: #8080ff;
+    }
+    button:hover {
+        background: #8080ff;
+    }
+
+</style>
+<script>
+
+    elem.addEventListener("onclick", sayThanks())
+    function appendrow(text, table) {
+        let row = document.createElement("TR");
+        let cell1 = document.createElement("TD");
+        let cell2 = document.createElement("TD");
+        cell1.innerText = text;
+        cell2.innerText = '1';
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        table.appendChild(row);
+    }
+    function addTrousers() {
+        let arrCells = Buy.getElementsByTagName('TD');
+        for(let i = 0; i < arrCells.length; i++) {
+            if(arrCells[i].innerHTML == 'Брюки') {
+                arrCells[i+1].innerHTML = +arrCells[i+1].innerHTML + +1;
+                return;
+            }
+        }
+        appendrow('Брюки', Buy);
+    }
+    function addShirt() {
+        let arrCells = Buy.getElementsByTagName('TD');
+        for(let i = 0; i < arrCells.length; i++) {
+            if(arrCells[i].innerHTML == 'Сорочка') {
+                arrCells[i+1].innerHTML = +arrCells[i+1].innerHTML + +1;
+                return;
+            }
+        }
+
+        appendrow('Сорочка', Buy);
+    }
+    function addShorts() {
+        let arrCells = Buy.getElementsByTagName('TD');
+        for(let i = 0; i < arrCells.length; i++) {
+            if(arrCells[i].innerHTML == 'Шорти') {
+                arrCells[i+1].innerHTML = +arrCells[i+1].innerHTML + +1;
+                return;
+            }
+        }
+        appendrow('Шорти', Buy);
+    }
+    function addshoes() {
+        let arrCells = Buy.getElementsByTagName('TD');
+        for(let i = 0; i < arrCells.length; i++) {
+            if(arrCells[i].innerHTML == 'Туфлі') {
+                arrCells[i+1].innerHTML = +arrCells[i+1].innerHTML + +1;
+                return;
+            }
+        }
+        appendrow('Туфлі', Buy);
+    }
+
+</script>
+</html>
