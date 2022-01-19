@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+</head>
+<style>
+    #main{
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background-color: darkgray;
+    }
+    #div1{
+        position: absolute;
+        background: yellow;
+        background-size: 200%;
+        width: 100px;
+        height: 100px;
+    }
+    #div2{
+        position: absolute;
+        background-color: burlywood;
+        background-size: 100%;
+        width: 100px;
+        height: 100px;
+    }
+    #div3{
+        position: absolute;
+        background-color: #1f87a0;
+        background-size: 100%;
+        width: 100px;
+        height: 100px;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+    }
+
+</style>
+<body>
+<div id ="main">
+    <div id = "div1" style="left: 20px; top: 20px;"></div>
+    <div id = "div2" style="left: 200px; top: 20px;"></div>
+    <div id = "div3" style="left: 400px; top: 20px;"></div>
+</div>
+
+
+<script>
+    Element.prototype.makeDraggable = function (){
+        let x = this
+        x.onmousedown = function (f){
+            let offsetX = f.pageX - parseInt(x.style.left)
+            let offsetY = f.pageY - parseInt(x.style.top)
+            document.onmousemove = function(f){
+                x.style.left = Math.max(Math.min(f.pageX - offsetX, x.parentNode.clientWidth - x.clientWidth), 0) + 'px'
+                x.style.top = Math.max(Math.min(f.pageY - offsetY, x.parentNode.clientHeight - x.clientHeight), 0) + 'px'
+            }
+        }
+        document.onmouseup = function(){
+            document.onmousemove = x.onmouseup = null
+        }
+    }
+    document.getElementById("div1").makeDraggable()
+    document.getElementById("div2").makeDraggable()
+    document.getElementById("div3").makeDraggable()
+</script>
+</body>
+</html>

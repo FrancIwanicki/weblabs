@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+</head>
+<body>
+
+<form id="form" onchange="Emeils()">
+    <input type="checkbox"><label>mountain@gmail.com</label><br>
+    <input type="checkbox"><label>tree@gmail.com</label><br>
+    <input type="checkbox"><label>world@gmail.com</label><br>
+    <input type="checkbox"><label>cloud@gmail.com</label><br>
+    <input type="checkbox"><label>river@gmail.com</label><br>
+    <input type="checkbox"><label>wood@gmail.com</label><br>
+    <input type="checkbox"><label>field@gmail.com</label><br>
+    <input type="checkbox"><label>snow@gmail.com</label><br>
+    <input type="checkbox"><label>rain@gmail.com</label><br>
+    <input type="checkbox"><label>wind@gmail.com</label><br>
+</form><br><br>
+<div id="res"></div>
+ <script>
+     function Emeils() {
+         let form = document.getElementById('form');
+         let res = document.getElementById('res');
+         res.innerHTML = '';
+         let arr = form.querySelectorAll(":checked");
+
+         let tmp = true;
+         for(let i = 0; i < arr.length; i++) {
+             if(tmp) {
+                 res.innerHTML = arr[i].nextSibling.textContent;
+                 tmp = false
+             }
+             else res.innerHTML += '; ' + arr[i].nextSibling.textContent;
+         }
+     }
+ </script>
+</body>
+</html>

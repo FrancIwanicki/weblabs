@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+</head>
+<body>
+
+<table id="table">
+    <tr>
+        <td>Січень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Лютий</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Березень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Квітень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Травень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Червень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Липень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Серпень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Вересень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Жовтень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Листопад</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Грудень</td>
+        <td><input type="number"></td>
+    </tr>
+    <tr>
+        <td>Сума</td>
+        <td id="summa"></td>
+    </tr>
+    <tr>
+        <td>Середнє</td>
+        <td id="average"></td>
+    </tr>
+    <tr>
+        <td>Мінімальне</td>
+        <td id="minimum"></td>
+    </tr>
+    <tr>
+        <td>Максимальне</td>
+        <td id="maximum"></td>
+    </tr>
+</table>
+
+<br>
+<button onclick="count()">Обрахувати</button>
+
+
+
+<br>
+</body>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    td {
+        border: 2px solid black;
+    }
+</style>
+<script>
+    function count() {
+        let summa = document.getElementById('summa')
+        let average = document.getElementById('average')
+        let minimum = document.getElementById('minimum')
+        let maximum = document.getElementById('maximum')
+        let tdArr = document.getElementsByTagName("input")
+        let sum = 0;
+        let min = +tdArr[0].value
+        let max = +tdArr[0].value
+
+        for(let i = 0; i < tdArr.length; i++) {
+            sum += +tdArr[i].value
+            if(+tdArr[i].value < min) min = +tdArr[i].value
+            if(+tdArr[i].value > max) max = +tdArr[i].value
+        }
+        summa.innerHTML = sum
+        average.innerHTML = sum / tdArr.length
+        minimum.innerHTML = min
+        maximum.innerHTML = max
+    }
+</script>
+</html>

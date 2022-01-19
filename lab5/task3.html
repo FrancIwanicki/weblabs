@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+
+<form id="form">
+    <input type="checkbox" value="ua" id="1"><label for="1">Ukrainian</label><br>
+    <input type="checkbox" value="en" id="2"><label for="2">English</label><br>
+    <input type="checkbox" value="sp" id="3"><label for="3">Spanish</label><br>
+    <input type="button" onclick="getByName()" value="OK"><br>
+    <span id="span1"></span>
+</form>
+
+<script>
+    function getByName() {
+        span1.innerHTML = '';
+        let f = document.getElementById("form");
+        let arr = f.querySelectorAll(":checked");
+
+        let tmp = true;
+        for(let i = 0; i < arr.length; i++) {
+            if(tmp) {
+                span1.innerHTML = arr[i].value;
+                tmp = false
+            }
+            else span1.innerHTML += ', ' + arr[i].value;
+        }
+    }
+</script>
+</body>
+</html>
