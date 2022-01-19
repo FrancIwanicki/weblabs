@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="task7.js"></script>
+    <style>
+      #table1 td {
+        border: 3px solid #3c203c;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function addRows() {
+        let inform = document.getElementById("inform").value;
+        let reg1 = inform.match(/^([A-Z]{1}[a-z]+\s[A-Z]{1}[a-z]{1,})$/gm);
+        let reg2 = inform.match(/^(Female|Male)$/gm);
+        let reg3 = inform.match(/^(\d+\s.+)$/gm);
+        let reg4 = inform.match(/^(.+,\s[A-Z]{2}\s\d+)$/gm);
+        let reg5 = inform.match(/(\d\d-\d\d-\d{4})/gm);
+        let reg6 = inform.match(/^[a-z]+$/gm);
+        let reg7 = inform.match(/^[A-Z]\S{7}$/gm);
+        let reg8 = inform.match(/^\S+\.[a-z]{3}$/gm);
+        let length = reg1.length;
+        for (let i = 0; i < length; i++) {
+          tabBody = document.getElementsByTagName("tbody").item(0);
+          row = document.createElement("tr");
+          cell1 = document.createElement("td");
+          cell2 = document.createElement("td");
+          cell3 = document.createElement("td");
+          cell4 = document.createElement("td");
+          cell5 = document.createElement("td");
+          cell6 = document.createElement("td");
+          cell7 = document.createElement("td");
+          cell8 = document.createElement("td");
+          textnode1 = document.createTextNode(reg1[i]);
+          textnode2 = document.createTextNode(reg2[i]);
+          textnode3 = document.createTextNode(reg3[i]);
+          textnode4 = document.createTextNode(reg4[i]);
+          textnode5 = document.createTextNode(reg5[i]);
+          textnode6 = document.createTextNode(reg6[i]);
+          textnode7 = document.createTextNode(reg7[i]);
+          textnode8 = document.createTextNode(reg8[i]);
+          cell1.appendChild(textnode1);
+          cell2.appendChild(textnode2);
+          cell3.appendChild(textnode3);
+          cell4.appendChild(textnode4);
+          cell5.appendChild(textnode5);
+          cell6.appendChild(textnode6);
+          cell7.appendChild(textnode7);
+          cell8.appendChild(textnode8);
+          row.appendChild(cell1);
+          row.appendChild(cell2);
+          row.appendChild(cell3);
+          row.appendChild(cell4);
+          row.appendChild(cell5);
+          row.appendChild(cell6);
+          row.appendChild(cell7);
+          row.appendChild(cell8);
+          tabBody.appendChild(row);
+        }
+      }
+    </script>
+    <table id="table1">
+      <tbody>
+        <tr>
+          <td>First name</td>
+          <td>Last name</td>
+          <td>Gender</td>
+          <td>Address</td>
+          <td>BirthDate</td>
+          <td>NickName</td>
+          <td>Password</td>
+          <td>Email</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tr>
+        <td><textarea id="inform"></textarea></td>
+      </tr>
+      <tr>
+        <td align="left">
+          <input type="button" value="addRows" onclick="addRows()" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

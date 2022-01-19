@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task8</title>
+</head>
+<body>
+<input id="input1" type="text">
+<button onclick="func()">Змінити</button>
+<p id="output1"> </p>
+<script>
+    function func(){
+        var format1 = document.getElementById("input1").value;
+        var format2  = format1.replace(/([0-9]{4})\/([0-9]{2})\/([0-9]{2})/g, "$3.$2.$1");
+        document.getElementById("output1").innerHTML = format2;
+    }
+
+</script>
+</body>
+</html>

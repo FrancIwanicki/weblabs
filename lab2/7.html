@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+</head>
+<body>
+<input id="input1" type="text">
+<button onclick="func()">Змінити</button>
+<p id="output1"> </p>
+<script>
+function func() {
+    var text = document.getElementById("input1").value;
+    var o1 = text.split(/(?=[A-Z])/).join('_').toLowerCase();
+    document.getElementById("output1").innerHTML = o1;
+}
+</script>
+</body>
+</html>
